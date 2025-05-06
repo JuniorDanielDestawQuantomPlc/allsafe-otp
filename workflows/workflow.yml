@@ -1,0 +1,41 @@
+name: Publish to PyPI
+
+# This workflow will be triggered on push to the main branch
+on:
+  push:
+    branches:
+      - main  # Only run when code is pushed to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # The runner used to execute the job
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python (you can specify your desired Python version here)
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      # Step 3: Install dependencies for building and publishing
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine  # Install tools needed for publishing
+
+      # Step 4: Build the distribution
+      - name: Build distribution
+        run: |
+          python setup.py sdist bdist_wheel  # Create .tar.gz and .whl files
+
+      # Step 5: Upload to PyPI using Twine
+      - name: Upload to PyPI
+        run: |
+          twine upload dist/*  # Upload all files in the dist/ folder to PyPI
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}  # Your PyPI username from GitHub secrets
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}  # Your PyPI password from GitHub secrets
