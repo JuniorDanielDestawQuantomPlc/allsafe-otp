@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: allsafe-otp
+Version: 0.1
+Summary: A simple TOTP + QR code generator package for 2FA
+Home-page: UNKNOWN
+Author: Daniel Destaw
+Author-email: daniel@allsafe.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Allsafe OTP
+
+Allsafe OTP is a simple Python library for generating secure, time-based (TOTP) and counter-based (HOTP) one-time passwords (OTPs) for multi-factor authentication (MFA) systems. The library is designed for easy integration into Python-based applications, including Django apps.
+
+## Features:
+- **TOTP (Time-based One-Time Password)**: Generate OTPs that expire after a set time interval.
+- **HOTP (Counter-based One-Time Password)**: Generate OTPs based on a moving counter.
+- **Secure**: Uses HMAC-SHA1 for OTP generation.
+- **Flexible**: Can be used in any Python application.
+- **Easy Integration**: Compatible with Django and other Python frameworks.
+
+## Installation:
+```bash
+pip install allsafe-otp
+
+

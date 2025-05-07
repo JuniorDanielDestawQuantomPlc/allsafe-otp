@@ -1,16 +1,23 @@
 from setuptools import setup, find_packages
+import os  # You forgot this
 
 setup(
-    name='allsafe-otp',  # Package name
-    version='0.1.0',  # Version number
-    packages=find_packages(),  # Automatically find packages
+    name="allsafe_otp",
+    version="0.1",
+    packages=find_packages(),
     install_requires=[
-        # List any dependencies your package needs here
+        "qrcode",
+        "Pillow",  # Needed by qrcode to handle image saving
     ],
+    author="Daniel Destaw",
+    author_email="daniel@allsafe.com",
+    description="A simple TOTP + QR code generator package for 2FA",
+    long_description=open("README.md").read() if os.path.exists("README.md") else "",
+    long_description_content_type="text/markdown",
     classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',  # Minimum Python version
+    python_requires='>=3.6',
 )
